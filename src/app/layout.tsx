@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
+import { Navbar } from "@/components/layout/Navbar";
+import { FloatingChatWidget } from "@/components/layout/FloatingChatWidget";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -20,9 +27,13 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body
-        className={`${inter.variable} font-sans antialiased bg-black text-white selection:bg-orange-500/30`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground selection:bg-accent/30`}
       >
-        {children}
+        <Navbar />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <FloatingChatWidget />
       </body>
     </html>
   );
