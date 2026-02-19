@@ -20,46 +20,46 @@ export function FloatingChatWidget() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="w-[350px] h-[500px] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden"
+            className="w-[350px] h-[500px] bg-background border border-border/50 rounded-xl shadow-2xl flex flex-col overflow-hidden glass-hover"
           >
             {/* Header */}
-            <div className="p-4 border-b bg-primary text-primary-foreground flex justify-between items-center">
+            <div className="p-4 border-b border-border/50 bg-eclipse text-white flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                <h3 className="font-semibold text-sm">Asistente Virtual</h3>
+                <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_5px_rgba(74,222,128,0.5)]" />
+                <h3 className="font-semibold text-sm tracking-wide">Asistente Range Rover</h3>
               </div>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="h-6 w-6 text-primary-foreground hover:bg-white/20 hover:text-white"
+                className="h-6 w-6 text-white hover:bg-white/20 hover:text-white"
               >
                 <X className="h-4 w-4" />
               </Button>
             </div>
 
             {/* Chat Area (Mocked) */}
-            <div className="flex-1 p-4 bg-muted/30 overflow-y-auto space-y-4">
+            <div className="flex-1 p-4 bg-muted/20 overflow-y-auto space-y-4">
               <div className="flex justify-start">
-                <div className="bg-white border text-foreground rounded-lg p-3 max-w-[80%] text-sm shadow-sm">
-                  Hola, ¿en qué puedo ayudarte con tu nuevo Range Rover?
+                <div className="bg-white border border-border/30 text-foreground rounded-lg rounded-tl-none p-3 max-w-[80%] text-sm shadow-sm">
+                  Hola, bienvenido a Range Rover. ¿En qué puedo ayudarte hoy?
                 </div>
               </div>
                <div className="flex justify-end">
-                <div className="bg-primary text-primary-foreground rounded-lg p-3 max-w-[80%] text-sm shadow-sm">
-                  Me gustaría saber más sobre el modelo Sport.
+                <div className="bg-eclipse text-white rounded-lg rounded-tr-none p-3 max-w-[80%] text-sm shadow-sm">
+                  Me gustaría información sobre el nuevo modelo en verde oscuro.
                 </div>
               </div>
             </div>
 
             {/* Input Area */}
-            <form className="p-3 border-t bg-background flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="p-3 border-t border-border/50 bg-background flex gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="text"
-                placeholder="Escribe un mensaje..."
+                placeholder="Escribe tu consulta..."
                 className="flex-1 text-sm bg-transparent outline-none px-2 text-foreground placeholder:text-muted-foreground"
               />
-              <Button size="icon" variant="ghost" type="submit" className="h-8 w-8 text-primary hover:bg-primary/10">
+              <Button size="icon" variant="ghost" type="submit" className="h-8 w-8 text-eclipse hover:bg-eclipse/10">
                 <Send className="h-4 w-4" />
               </Button>
             </form>
@@ -70,7 +70,7 @@ export function FloatingChatWidget() {
       <Button
         onClick={() => setIsOpen(!isOpen)}
         size="icon"
-        className="h-14 w-14 rounded-full shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-transform hover:scale-105"
+        className="h-14 w-14 rounded-full shadow-lg bg-eclipse text-white hover:bg-eclipse/90 transition-transform hover:scale-105 border-2 border-almond/20"
         aria-label="Toggle Chat"
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
