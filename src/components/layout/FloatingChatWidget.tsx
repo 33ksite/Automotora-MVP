@@ -4,10 +4,9 @@ import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, X, Send } from "lucide-react"
 import { Button } from "@/components/ui/Button"
-import { cn } from "@/lib/utils"
 
 // Placeholder for future context integration
-export const ChatContext = React.createContext<any>(null)
+export const ChatContext = React.createContext<unknown>(null)
 
 export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = React.useState(false)

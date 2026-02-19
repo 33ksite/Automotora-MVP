@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Automotora MVP | Solución Premium de Gestión Automotriz",
-  description: "Plataforma de vanguardia para la gestión y visualización de inventario automotriz con estética premium.",
+  title: "LuxeAuto | Premium Vehicles",
+  description: "Curated inventory of the world's finest automobiles.",
 };
 
 export default function RootLayout({

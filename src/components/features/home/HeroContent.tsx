@@ -1,4 +1,5 @@
 import * as React from "react"
+import Image from "next/image"
 import { ArrowRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
@@ -31,8 +32,13 @@ export function HeroContent() {
       <div className="flex items-center gap-4 mt-8 pt-8 border-t border-almond/30 w-full">
         <div className="flex -space-x-4">
            {[1, 2, 3, 4].map((i) => (
-             <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-almond flex items-center justify-center overflow-hidden">
-                <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="h-full w-full object-cover opacity-80 mix-blend-multiply" />
+             <div key={i} className="relative h-10 w-10 rounded-full border-2 border-background bg-almond flex items-center justify-center overflow-hidden">
+                <Image
+                  src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                  alt="User"
+                  fill
+                  className="object-cover opacity-80 mix-blend-multiply"
+                />
              </div>
            ))}
         </div>
