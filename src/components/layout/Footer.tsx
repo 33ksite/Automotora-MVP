@@ -137,6 +137,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10 text-xs text-muted-foreground">
            <p>&copy; {new Date().getFullYear()} LuxeAuto Inc. All rights reserved.</p>
            <div className="flex items-center gap-6">
+              <Link href="/admin/add-vehicle" className="hover:text-white transition-colors">Admin Panel</Link>
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
               <div className="flex items-center gap-4 ml-4">
