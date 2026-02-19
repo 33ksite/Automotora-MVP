@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { FloatingChatWidget } from "@/components/layout/FloatingChatWidget";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
+        <Footer />
         <FloatingChatWidget />
       </body>
     </html>

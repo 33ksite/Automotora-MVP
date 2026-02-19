@@ -1,12 +1,12 @@
 // src/lib/mock-db.ts
-import { Car, FilterOptions } from "@/types/automotive";
+import { Car, FilterOptions, FuelType } from "@/types/automotive";
 
 const cars: Car[] = [
   {
     id: "1",
     slug: "range-rover-sport-autobiography",
     make: "Land Rover",
-    model: "Range Rover Sport Autobiography",
+    model: "Range Rover Sport Autobiography PHEV",
     year: 2025,
     price: 145000,
     currency: "USD",
@@ -17,10 +17,10 @@ const cars: Car[] = [
     transmission: "Automatic",
     driveType: "AWD",
     engine: {
-      type: "4.4L V8 Twin Turbo",
-      horsepower: 523,
-      torque: 750,
-      fuelType: "Gasoline",
+      type: "3.0L I6 + Electric Motor",
+      horsepower: 542,
+      torque: 800,
+      fuelType: "Plug-in Hybrid",
     },
     performance: {
       acceleration: 4.3,
@@ -31,7 +31,7 @@ const cars: Car[] = [
       width: 2047,
       height: 1820,
       wheelbase: 2997,
-      weight: 2430,
+      weight: 2735,
     },
     features: [
       "Meridian Signature Sound System",
@@ -301,6 +301,31 @@ export async function getAllCars(filters?: FilterOptions): Promise<Car[]> {
           car.price <= filters.priceRange![1]
       );
     }
+    if (filters.yearRange) {
+      filteredCars = filteredCars.filter(
+        (car) =>
+          car.year >= filters.yearRange![0] &&
+          car.year <= filters.yearRange![1]
+      );
+    }
+    if (filters.mileageRange) {
+        filteredCars = filteredCars.filter(
+            (car) =>
+              car.mileage >= filters.mileageRange![0] &&
+              car.mileage <= filters.mileageRange![1]
+        );
+    }
+    if (filters.fuelType && filters.fuelType.length > 0) {
+        // Group Logic for UI: "Combustion", "Hybrid", "EV"
+        // But here we filter by strict types from DB.
+        // We will assume the UI passes the exact DB types, OR we map them.
+        // For simplicity, let's assume the UI passes "Gasoline", "Diesel" etc.
+        // OR the UI passes "Combustion" and we map it here.
+        // Let's assume the UI passes the exact types for now to match the Interface.
+        filteredCars = filteredCars.filter((car) =>
+           filters.fuelType?.includes(car.engine.fuelType)
+        );
+    }
     if (filters.color && filters.color.length > 0) {
         filteredCars = filteredCars.filter(car =>
             filters.color?.some(c => car.color.toLowerCase().includes(c.toLowerCase()))
@@ -329,6 +354,7 @@ export async function getUniqueFilters() {
   const makes = Array.from(new Set(cars.map((c) => c.make)));
   const bodyTypes = Array.from(new Set(cars.map((c) => c.bodyType)));
   const colors = Array.from(new Set(cars.map((c) => c.color)));
+  const fuelTypes = Array.from(new Set(cars.map((c) => c.engine.fuelType)));
 
-  return { makes, bodyTypes, colors };
+  return { makes, bodyTypes, colors, fuelTypes };
 }

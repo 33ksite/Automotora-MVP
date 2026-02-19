@@ -1,46 +1,56 @@
 import * as React from "react"
-import { HeroContent } from "./HeroContent"
-import { HeroShowcase } from "./HeroShowcase"
-import { VehicleMetricsBar } from "./VehicleMetricsBar"
-import { VideoTeaserSection } from "./VideoTeaserSection"
-
-const metrics = [
-  { label: "Torque", value: "700", unit: "Nm" },
-  { label: "Aceleración", value: "4.3", unit: "s 0-100" },
-  { label: "Velocidad", value: "250", unit: "km/h" },
-]
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Car, ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/Button"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden bg-background">
-      <div className="container mx-auto px-4 md:px-6 py-12 flex flex-col gap-16">
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      {/* Background Media */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+          alt="Luxury Car Background"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+      </div>
 
-        {/* Main Hero Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <div className="flex flex-col gap-10 order-2 lg:order-1">
-            <HeroContent />
-            <div className="hidden lg:block">
-              <VehicleMetricsBar metrics={metrics} />
-            </div>
-          </div>
+      {/* Content */}
+      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center text-center animate-fade-in">
+        <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+          The Art of Automotive Excellence
+        </span>
 
-          {/* Right Column - Showcase */}
-          <div className="relative order-1 lg:order-2">
-             <HeroShowcase />
-          </div>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 tracking-tight leading-tight max-w-4xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          Experience the <span className="text-gold italic">Extraordinary</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed animate-slide-up" style={{ animationDelay: "0.3s" }}>
+          Discover a curated collection of the world&apos;s most exclusive vehicles.
+          Performance, luxury, and sophistication in every detail.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md animate-slide-up" style={{ animationDelay: "0.4s" }}>
+          <Button asChild size="lg" className="h-14 text-base font-medium bg-white text-black hover:bg-white/90 w-full sm:w-auto flex-1">
+            <Link href="/catalog">
+              View Inventory <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="h-14 text-base font-medium border-white/30 text-white hover:bg-white/10 hover:text-white w-full sm:w-auto flex-1 backdrop-blur-sm">
+            <Link href="#sell-your-car">
+              Sell Your Car <Car className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
+      </div>
 
-        {/* Mobile Metrics (Visible only on mobile/tablet) */}
-        <div className="lg:hidden">
-          <VehicleMetricsBar metrics={metrics} />
-        </div>
-
-        {/* Bottom Section */}
-        <div className="w-full max-w-5xl mx-auto pb-12">
-           <VideoTeaserSection />
-        </div>
-
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <ChevronDown className="h-8 w-8 text-white/50" />
       </div>
     </section>
   )

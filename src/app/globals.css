@@ -2,43 +2,47 @@
 
 :root {
   /* Palette Constants */
-  --almond: #D6BD98;
-  --eclipse: #1A3636;
-  --matcha: #677D6A;
-  --forest: #40534C;
+  /* Monochromatic Base */
+  --onyx: #111111;
+  --platinum: #E5E5E5;
+  --slate-gray: #71717A;
+  --off-white: #FAFAFA;
+
+  /* Accent */
+  --gold: #C6A87C; /* Subtle Metallic Gold */
 
   /* Semantic Colors */
-  --background: #FDFBF7; /* Very light warm beige */
-  --foreground: #1A3636; /* Eclipse */
+  --background: #FAFAFA;
+  --foreground: #111111;
 
   --card: #FFFFFF;
-  --card-foreground: #1A3636;
+  --card-foreground: #111111;
 
   --popover: #FFFFFF;
-  --popover-foreground: #1A3636;
+  --popover-foreground: #111111;
 
   /* Primary Actions / Dark Backgrounds */
-  --primary: #1A3636; /* Eclipse */
-  --primary-foreground: #FFFFFF; /* White for contrast on dark green/black */
+  --primary: #111111;
+  --primary-foreground: #FFFFFF;
 
   /* Secondary Actions / Accents */
-  --secondary: #D6BD98; /* Almond */
-  --secondary-foreground: #1A3636;
+  --secondary: #F4F4F5;
+  --secondary-foreground: #111111;
 
   /* Muted / Subtext */
-  --muted: #F2F0EB;
-  --muted-foreground: #677D6A; /* Matcha */
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
 
   /* Highlights */
-  --accent: #D6BD98; /* Almond */
-  --accent-foreground: #1A3636;
+  --accent: #C6A87C;
+  --accent-foreground: #FFFFFF;
 
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
-  --border: #D6BD98; /* Almond (faint) or Matcha? Let's go with low opacity Almond later, but solid for now */
-  --input: #E2E8F0;
-  --ring: #1A3636;
+  --border: #E4E4E7;
+  --input: #E4E4E7;
+  --ring: #111111;
 
   --radius: 0.5rem;
 }
@@ -73,10 +77,8 @@
   --color-ring: var(--ring);
 
   /* Custom Palette Colors */
-  --color-almond: var(--almond);
-  --color-eclipse: var(--eclipse);
-  --color-matcha: var(--matcha);
-  --color-forest: var(--forest);
+  --color-onyx: var(--onyx);
+  --color-gold: var(--gold);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: calc(var(--radius) - 2px);
@@ -93,22 +95,43 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .glass-dark {
-  background: rgba(26, 54, 54, 0.4); /* Eclipse with opacity */
+  background: rgba(17, 17, 17, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.glass-hover {
-  transition: all 0.3s ease;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--muted-foreground);
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 
-.glass-hover:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
 }

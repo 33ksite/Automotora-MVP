@@ -3,7 +3,7 @@ import { getAllCars, getUniqueFilters } from "@/lib/mock-db"
 import { FilterSidebar } from "@/components/features/catalog/FilterSidebar"
 import { ProductGrid } from "@/components/features/catalog/ProductGrid"
 import { Badge } from "@/components/ui/Badge"
-import { BodyType } from "@/types/automotive"
+import { BodyType, FuelType } from "@/types/automotive"
 
 interface CatalogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -15,18 +15,27 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   // Parse filters
   const makeFilter = typeof params.make === 'string' ? [params.make] : (Array.isArray(params.make) ? params.make : undefined)
   const bodyTypeFilter = typeof params.bodyType === 'string' ? [params.bodyType] : (Array.isArray(params.bodyType) ? params.bodyType : undefined)
-  // Ensure bodyTypeFilter matches strict BodyType type if needed, but for now string[] is fine for mock DB
   const colorFilter = typeof params.color === 'string' ? [params.color] : (Array.isArray(params.color) ? params.color : undefined)
+  const fuelFilter = typeof params.fuelType === 'string' ? [params.fuelType] : (Array.isArray(params.fuelType) ? params.fuelType : undefined)
 
   const minPrice = params.minPrice ? Number(params.minPrice) : undefined
   const maxPrice = params.maxPrice ? Number(params.maxPrice) : undefined
 
+  const minYear = params.minYear ? Number(params.minYear) : undefined
+  const maxYear = params.maxYear ? Number(params.maxYear) : undefined
+
+  const minMileage = params.minMileage ? Number(params.minMileage) : undefined
+  const maxMileage = params.maxMileage ? Number(params.maxMileage) : undefined
+
   // Fetch data
   const cars = await getAllCars({
     make: makeFilter,
-    bodyType: bodyTypeFilter as BodyType[], // Simple cast for MVP
+    bodyType: bodyTypeFilter as BodyType[],
     color: colorFilter,
-    priceRange: (minPrice !== undefined || maxPrice !== undefined) ? [minPrice || 0, maxPrice || 10000000] : undefined
+    fuelType: fuelFilter as FuelType[],
+    priceRange: (minPrice !== undefined || maxPrice !== undefined) ? [minPrice || 0, maxPrice || 10000000] : undefined,
+    yearRange: (minYear !== undefined || maxYear !== undefined) ? [minYear || 1900, maxYear || new Date().getFullYear() + 1] : undefined,
+    mileageRange: (minMileage !== undefined || maxMileage !== undefined) ? [minMileage || 0, maxMileage || 1000000] : undefined,
   })
 
   const filterOptions = await getUniqueFilters()
@@ -55,7 +64,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
              options={{
                makes: filterOptions.makes,
                bodyTypes: filterOptions.bodyTypes,
-               colors: filterOptions.colors
+               colors: filterOptions.colors,
+               fuelTypes: filterOptions.fuelTypes
              }}
           />
         </div>

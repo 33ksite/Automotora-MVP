@@ -42,7 +42,7 @@ export function ReservationForm({ car }: ReservationFormProps) {
   }
 
   return (
-    <div className="flex flex-col h-full bg-card border border-border/50 rounded-xl shadow-sm overflow-hidden sticky top-24">
+    <div className="flex flex-col h-full bg-card border border-border/50 rounded-xl shadow-sm overflow-hidden">
        <div className="p-6 border-b border-border/50 bg-muted/20">
         <h3 className="font-serif font-bold text-xl text-foreground">Interest Inquiry</h3>
         <p className="text-sm text-muted-foreground mt-1">

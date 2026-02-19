@@ -56,4 +56,5 @@ export interface FilterOptions {
   yearRange?: [number, number];
   color?: string[];
   fuelType?: FuelType[];
+  mileageRange?: [number, number];
 }

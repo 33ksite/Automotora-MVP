@@ -5,9 +5,10 @@ import { getCarBySlug, getRelatedCars } from "@/lib/mock-db"
 import { ProductGallery } from "@/components/features/product/ProductGallery"
 import { ProductSpecs } from "@/components/features/product/ProductSpecs"
 import { ReservationForm } from "@/components/features/product/ReservationForm"
+import { LoanCalculator } from "@/components/features/product/LoanCalculator"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
-import { ChevronLeft, Share2, Heart } from "lucide-react"
+import { ChevronLeft, Share2, Heart, Phone, Calendar } from "lucide-react"
 import { CarCard } from "@/components/features/catalog/CarCard"
 
 interface ProductPageProps {
@@ -98,7 +99,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
              </div>
 
-             <ReservationForm car={car} />
+             <div className="sticky top-24 space-y-6">
+                <ReservationForm car={car} />
+
+                <div className="grid grid-cols-2 gap-4">
+                    <Button variant="outline" className="w-full gap-2 h-12 border-primary/20 hover:bg-primary/5">
+                        <Phone className="h-4 w-4" /> WhatsApp
+                    </Button>
+                    <Button variant="outline" className="w-full gap-2 h-12 border-primary/20 hover:bg-primary/5">
+                        <Calendar className="h-4 w-4" /> Test Drive
+                    </Button>
+                </div>
+
+                <LoanCalculator vehiclePrice={car.price} currency={car.currency} />
+             </div>
           </div>
         </div>
 
