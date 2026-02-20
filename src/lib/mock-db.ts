@@ -13,11 +13,11 @@ const cars: Car[] = [
     mileage: 0,
     condition: "New",
     bodyType: "SUV",
-    color: "Dark Green",
+    color: "Verde Oscuro",
     transmission: "Automatic",
     driveType: "AWD",
     engine: {
-      type: "3.0L I6 + Electric Motor",
+      type: "3.0L I6 + Motor Eléctrico",
       horsepower: 542,
       torque: 800,
       fuelType: "Plug-in Hybrid",
@@ -34,11 +34,11 @@ const cars: Car[] = [
       weight: 2735,
     },
     features: [
-      "Meridian Signature Sound System",
-      "Panoramic Sunroof",
-      "Heated & Ventilated Seats",
-      "Adaptive Cruise Control",
-      "360 Camera",
+      "Sistema de Sonido Meridian Signature",
+      "Techo Panorámico",
+      "Asientos Calefactados y Ventilados",
+      "Control de Crucero Adaptativo",
+      "Cámara 360",
     ],
     images: [
       "https://images.unsplash.com/photo-1754254013090-21573dc4e7d5?fm=jpg&q=60&w=3000&auto=format&fit=crop", // Main Green Range Rover
@@ -46,7 +46,7 @@ const cars: Car[] = [
       "https://images.unsplash.com/photo-1627454820574-fb6aae3a505b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Wheel detail (generic)
     ],
     description:
-      "The epitome of sporting luxury. The new Range Rover Sport combines dramatic modernity with distinctive character and electrified performance.",
+      "El epítome del lujo deportivo. El nuevo Range Rover Sport combina una modernidad dramática con un carácter distintivo y un rendimiento electrificado.",
     stockStatus: "In Stock",
   },
   {
@@ -60,11 +60,11 @@ const cars: Car[] = [
     mileage: 120,
     condition: "New",
     bodyType: "Coupe",
-    color: "Arctic Grey",
+    color: "Gris Ártico",
     transmission: "Automatic", // PDK
     driveType: "RWD",
     engine: {
-      type: "4.0L Flat-6 Naturally Aspirated",
+      type: "4.0L Flat-6 Aspiración Natural",
       horsepower: 518,
       torque: 465,
       fuelType: "Gasoline",
@@ -81,18 +81,18 @@ const cars: Car[] = [
       weight: 1450,
     },
     features: [
-      "Weissach Package",
-      "Carbon Ceramic Brakes",
-      "Front Axle Lift System",
-      "Bucket Seats",
-      "Roll Cage",
+      "Paquete Weissach",
+      "Frenos Cerámicos de Carbono",
+      "Sistema de Elevación del Eje Delantero",
+      "Asientos Tipo Bucket",
+      "Jaula Antivuelco",
     ],
     images: [
       "https://images.unsplash.com/photo-1503376763036-066120622c74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Generic Porsche
       "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Interior
     ],
     description:
-      "Born on the racetrack. The 911 GT3 RS is designed for maximum performance with race-bred technology for the road.",
+      "Nacido en la pista. El 911 GT3 RS está diseñado para el máximo rendimiento con tecnología de carreras adaptada para la carretera.",
     stockStatus: "In Stock",
   },
   {
@@ -106,7 +106,7 @@ const cars: Car[] = [
     mileage: 50,
     condition: "New",
     bodyType: "SUV",
-    color: "Obsidian Black",
+    color: "Negro Obsidiana",
     transmission: "Automatic",
     driveType: "AWD",
     engine: {
@@ -127,17 +127,17 @@ const cars: Car[] = [
       weight: 2560,
     },
     features: [
-      "Burmester Surround Sound",
-      "Massage Seats",
-      "Night Package",
-      "22-inch Forged Wheels",
-      "Rear Entertainment System",
+      "Sonido Envolvente Burmester",
+      "Asientos con Masaje",
+      "Paquete Night",
+      "Llantas Forjadas de 22 pulgadas",
+      "Sistema de Entretenimiento Trasero",
     ],
     images: [
       "https://images.unsplash.com/photo-1520031441872-265149a9e690?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // G Wagon
     ],
     description:
-      "An icon of performance and luxury. The G 63 combines off-road capability with AMG performance and exclusive appointments.",
+      "Un icono de rendimiento y lujo. El G 63 combina capacidad todoterreno con el rendimiento de AMG y equipamiento exclusivo.",
     stockStatus: "In Stock",
   },
   {
@@ -151,11 +151,11 @@ const cars: Car[] = [
     mileage: 1500,
     condition: "Used",
     bodyType: "Coupe",
-    color: "Isle of Man Green",
+    color: "Verde Isla de Man",
     transmission: "Automatic",
     driveType: "AWD",
     engine: {
-      type: "3.0L Inline-6 Twin Turbo",
+      type: "3.0L 6 Cilindros en Línea Twin Turbo",
       horsepower: 503,
       torque: 650,
       fuelType: "Gasoline",
@@ -172,17 +172,17 @@ const cars: Car[] = [
       weight: 1780,
     },
     features: [
-      "Carbon Bucket Seats",
-      "Laserlight Headlights",
+      "Asientos Bucket de Carbono",
+      "Faros Laserlight",
       "Head-Up Display",
-      "Harmon Kardon Sound",
-      "M Carbon Exterior Package",
+      "Sonido Harmon Kardon",
+      "Paquete Exterior M Carbon",
     ],
     images: [
       "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // M4
     ],
     description:
-      "Driving dynamics in their purest form. The M4 Competition delivers adrenaline-pumping performance with everyday usability.",
+      "Dinámica de conducción en su forma más pura. El M4 Competition ofrece un rendimiento lleno de adrenalina con usabilidad diaria.",
     stockStatus: "In Stock",
   },
   {
@@ -196,7 +196,7 @@ const cars: Car[] = [
     mileage: 5000,
     condition: "Used",
     bodyType: "Sedan",
-    color: "Deep Blue Metallic",
+    color: "Azul Profundo Metalizado",
     transmission: "Automatic", // Single speed
     driveType: "AWD",
     engine: {
@@ -217,17 +217,17 @@ const cars: Car[] = [
       weight: 2162,
     },
     features: [
-      "Autopilot",
-      "Yoke Steering",
-      "21-inch Arachnid Wheels",
-      "Premium Connectivity",
-      "Rear Screen",
+      "Piloto Automático",
+      "Volante Yoke",
+      "Llantas Arachnid de 21 pulgadas",
+      "Conectividad Premium",
+      "Pantalla Trasera",
     ],
     images: [
       "https://images.unsplash.com/photo-1617704548623-29a198be5c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Model S
     ],
     description:
-      "Beyond Ludicrous. The quickest accelerating car in production today.",
+      "Más allá de lo absurdo. El coche de producción con la aceleración más rápida en la actualidad.",
     stockStatus: "Sold",
   },
     {
@@ -241,7 +241,7 @@ const cars: Car[] = [
     mileage: 200,
     condition: "New",
     bodyType: "Sedan",
-    color: "Kemora Gray",
+    color: "Gris Kemora",
     transmission: "Automatic", // 2-speed
     driveType: "AWD",
     engine: {
@@ -262,17 +262,17 @@ const cars: Car[] = [
       weight: 2347,
     },
     features: [
-      "Carbon Roof",
-      "Bang & Olufsen 3D Sound",
-      "Matrix LED Headlights",
-      "Performance Package",
-      "Tungsten Carbide Brakes",
+      "Techo de Carbono",
+      "Sonido 3D Bang & Olufsen",
+      "Faros Matrix LED",
+      "Paquete Performance",
+      "Frenos de Carburo de Tungsteno",
     ],
     images: [
       "https://images.unsplash.com/photo-1614026480418-bd11fdb9fa06?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // e-tron
     ],
     description:
-      "Electric performance art. The RS e-tron GT represents the future of Audi Sport.",
+      "Arte de rendimiento eléctrico. El RS e-tron GT representa el futuro de Audi Sport.",
     stockStatus: "In Stock",
   },
 ];
@@ -316,12 +316,6 @@ export async function getAllCars(filters?: FilterOptions): Promise<Car[]> {
         );
     }
     if (filters.fuelType && filters.fuelType.length > 0) {
-        // Group Logic for UI: "Combustion", "Hybrid", "EV"
-        // But here we filter by strict types from DB.
-        // We will assume the UI passes the exact DB types, OR we map them.
-        // For simplicity, let's assume the UI passes "Gasoline", "Diesel" etc.
-        // OR the UI passes "Combustion" and we map it here.
-        // Let's assume the UI passes the exact types for now to match the Interface.
         filteredCars = filteredCars.filter((car) =>
            filters.fuelType?.includes(car.engine.fuelType)
         );

@@ -107,20 +107,20 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
   return (
     <div className="flex flex-col gap-8 p-6 rounded-xl border border-border/50 bg-card sticky top-24 shadow-sm max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
       <div className="flex items-center justify-between border-b border-border/50 pb-4 sticky top-0 bg-card z-10">
-        <h3 className="font-serif font-bold text-lg text-foreground">Refine Search</h3>
+        <h3 className="font-serif font-bold text-lg text-foreground">Refinar Búsqueda</h3>
         <Button
           variant="ghost"
           size="sm"
           onClick={clearFilters}
           className="text-destructive hover:bg-destructive/10 h-8 px-2 text-xs"
         >
-          Clear All <X className="ml-1 h-3 w-3" />
+          Limpiar Todo <X className="ml-1 h-3 w-3" />
         </Button>
       </div>
 
       {/* Price Range */}
       <div className="space-y-4">
-        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Price Range</h4>
+        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Rango de Precio</h4>
         <div className="flex items-center gap-2">
           <Input
             type="number"
@@ -154,18 +154,18 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
 
       {/* Year Range */}
       <div className="space-y-4 border-t border-border/50 pt-6">
-        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Year</h4>
+        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Año</h4>
         <div className="flex items-center gap-2">
            <div className="relative w-full">
               <Select value={yearMin} onChange={(e) => setYearMin(e.target.value)} className="h-9 text-sm w-full">
-                <option value="">Min Year</option>
+                <option value="">Min</option>
                 {years.map(y => <option key={`min-${y}`} value={y}>{y}</option>)}
               </Select>
            </div>
            <span className="text-muted-foreground">-</span>
            <div className="relative w-full">
               <Select value={yearMax} onChange={(e) => setYearMax(e.target.value)} className="h-9 text-sm w-full">
-                <option value="">Max Year</option>
+                <option value="">Max</option>
                 {years.map(y => <option key={`max-${y}`} value={y}>{y}</option>)}
               </Select>
            </div>
@@ -174,7 +174,7 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
 
       {/* Fuel Type */}
       <div className="space-y-3 border-t border-border/50 pt-6">
-        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Fuel Type</h4>
+        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Combustible</h4>
         <div className="flex flex-col gap-3">
           {options.fuelTypes.map((fuel) => (
             <div key={fuel} className="flex items-center space-x-3 group">
@@ -198,8 +198,8 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
       {/* Mileage */}
       <div className="space-y-4 border-t border-border/50 pt-6">
         <div className="flex justify-between items-center">
-            <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Max Mileage</h4>
-            <span className="text-xs font-mono text-muted-foreground">{mileageMax >= 100000 ? "Any" : `${mileageMax.toLocaleString()} km`}</span>
+            <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Kilometraje Máx</h4>
+            <span className="text-xs font-mono text-muted-foreground">{mileageMax >= 100000 ? "Cualquiera" : `${mileageMax.toLocaleString()} km`}</span>
         </div>
         <Slider
           min={0}
@@ -212,7 +212,7 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
 
       {/* Makes Filter */}
       <div className="space-y-3 border-t border-border/50 pt-6">
-        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Brand</h4>
+        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Marca</h4>
         <div className="flex flex-col gap-3 max-h-[150px] overflow-y-auto pr-2 custom-scrollbar">
           {options.makes.map((make) => (
             <div key={make} className="flex items-center space-x-3 group">
@@ -235,7 +235,7 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
 
       {/* Body Types Filter */}
       <div className="space-y-3 border-t border-border/50 pt-6">
-        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Body Style</h4>
+        <h4 className="font-medium text-sm text-foreground uppercase tracking-wider">Estilo de Carrocería</h4>
         <div className="flex flex-col gap-3">
           {options.bodyTypes.map((type) => (
             <div key={type} className="flex items-center space-x-3 group">
@@ -281,7 +281,7 @@ export function FilterSidebar({ options }: FilterSidebarProps) {
 
       <div className="pt-6 mt-auto sticky bottom-0 bg-card pb-2">
         <Button onClick={applyFilters} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20">
-          Update Results
+          Actualizar Resultados
         </Button>
       </div>
     </div>

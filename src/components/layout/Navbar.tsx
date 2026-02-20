@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { href: "/catalog", label: "Inventory" },
-  { href: "#", label: "Services" },
-  { href: "#", label: "Experience" },
-  { href: "#", label: "Owners" },
+  { href: "/catalog", label: "Inventario" },
+  { href: "#", label: "Servicios" },
+  { href: "#", label: "Experiencia" },
+  { href: "#", label: "Propietarios" },
 ]
 
 export function Navbar() {
@@ -42,7 +42,7 @@ export function Navbar() {
             href="/"
             className="text-2xl font-serif font-bold tracking-tighter text-foreground z-50 relative"
           >
-            RANGE ROVER
+            LUXE AUTO
           </Link>
 
           {/* Desktop Navigation */}
@@ -72,7 +72,7 @@ export function Navbar() {
             </Button>
             <Button asChild variant="premium" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-md">
               <Link href="/catalog">
-                 <Car className="mr-2 h-4 w-4" /> Browse Stock
+                 <Car className="mr-2 h-4 w-4" /> Ver Stock
               </Link>
             </Button>
           </div>
@@ -114,11 +114,11 @@ export function Navbar() {
             <div className="flex flex-col gap-4 mt-auto">
                <Button asChild className="w-full bg-primary text-primary-foreground py-6 text-lg">
                   <Link href="/catalog" onClick={() => setIsOpen(false)}>
-                    View Inventory
+                    Ver Inventario
                   </Link>
                </Button>
                <Button variant="outline" className="w-full py-6 text-lg border-primary text-primary">
-                  Sign In
+                  Iniciar Sesión
                </Button>
             </div>
           </motion.div>

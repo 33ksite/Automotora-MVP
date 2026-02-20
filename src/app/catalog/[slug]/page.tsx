@@ -31,7 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="container mx-auto px-4 py-6">
         <Button variant="ghost" size="sm" asChild className="pl-0 text-muted-foreground hover:text-foreground">
           <Link href="/catalog">
-            <ChevronLeft className="mr-1 h-4 w-4" /> Back to Inventory
+            <ChevronLeft className="mr-1 h-4 w-4" /> Volver al Inventario
           </Link>
         </Button>
       </div>
@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <div className="flex items-center gap-2 mb-2">
                  <Badge variant="outline">{car.year}</Badge>
                  <Badge variant="secondary">{car.bodyType}</Badge>
-                 {car.condition === 'New' && <Badge variant="premium">New Arrival</Badge>}
+                 {car.condition === 'New' && <Badge variant="premium">Nueva Llegada</Badge>}
               </div>
               <h1 className="text-3xl font-serif font-bold text-foreground">{car.make} {car.model}</h1>
               <p className="text-xl font-medium text-primary">
@@ -60,13 +60,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* Description */}
             <div className="prose prose-stone max-w-none">
-              <h2 className="font-serif text-2xl font-bold text-foreground">Overview</h2>
+              <h2 className="font-serif text-2xl font-bold text-foreground">Descripción General</h2>
               <p className="text-muted-foreground leading-relaxed">{car.description}</p>
             </div>
 
             {/* Specs */}
             <div className="border-t border-border/50 pt-8">
-               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Specifications</h2>
+               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Especificaciones</h2>
                <ProductSpecs car={car} />
             </div>
 
@@ -78,21 +78,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div className="flex items-center gap-2 mb-4">
                    <Badge variant="outline">{car.year}</Badge>
                    <Badge variant="secondary">{car.bodyType}</Badge>
-                   {car.condition === 'New' && <Badge variant="premium">New Arrival</Badge>}
+                   {car.condition === 'New' && <Badge variant="premium">Nueva Llegada</Badge>}
                 </div>
                 <h1 className="text-4xl font-serif font-bold text-foreground leading-tight">{car.make} {car.model}</h1>
                 <div className="flex items-end justify-between mt-6 pb-6 border-b border-border/50">
                    <div>
-                      <p className="text-sm text-muted-foreground uppercase font-medium mb-1">Price</p>
+                      <p className="text-sm text-muted-foreground uppercase font-medium mb-1">Precio</p>
                       <p className="text-3xl font-bold text-primary">
                         {new Intl.NumberFormat('en-US', { style: 'currency', currency: car.currency, maximumFractionDigits: 0 }).format(car.price)}
                       </p>
                    </div>
                    <div className="flex gap-2">
-                      <Button variant="outline" size="icon" title="Save to Favorites">
+                      <Button variant="outline" size="icon" title="Guardar en Favoritos">
                          <Heart className="h-5 w-5" />
                       </Button>
-                      <Button variant="outline" size="icon" title="Share">
+                      <Button variant="outline" size="icon" title="Compartir">
                          <Share2 className="h-5 w-5" />
                       </Button>
                    </div>
@@ -119,7 +119,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* Related Vehicles */}
         {relatedCars.length > 0 && (
           <div className="mt-20 border-t border-border/50 pt-12">
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-8">You May Also Like</h2>
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-8">También te puede interesar</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                {relatedCars.map((relatedCar) => (
                   <CarCard key={relatedCar.id} car={relatedCar} />

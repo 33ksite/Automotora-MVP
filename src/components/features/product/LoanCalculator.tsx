@@ -37,14 +37,14 @@ export function LoanCalculator({ vehiclePrice, currency }: LoanCalculatorProps) 
     <div className="bg-card border border-border/50 rounded-xl p-6 shadow-sm space-y-6">
       <div className="flex items-center gap-2 border-b border-border/50 pb-4">
         <Calculator className="h-5 w-5 text-gold" />
-        <h3 className="font-serif font-bold text-lg">Finance Calculator</h3>
+        <h3 className="font-serif font-bold text-lg">Calculadora de Financiamiento</h3>
       </div>
 
       <div className="space-y-4">
         {/* Down Payment */}
         <div className="space-y-3">
            <div className="flex justify-between text-sm">
-              <Label>Down Payment</Label>
+              <Label>Pie (Anticipo)</Label>
               <span className="font-mono">{currency} {downPayment.toLocaleString()}</span>
            </div>
            <Slider
@@ -59,8 +59,8 @@ export function LoanCalculator({ vehiclePrice, currency }: LoanCalculatorProps) 
         {/* Term */}
         <div className="space-y-3">
            <div className="flex justify-between text-sm">
-              <Label>Term (Months)</Label>
-              <span className="font-mono">{term} months</span>
+              <Label>Plazo (Meses)</Label>
+              <span className="font-mono">{term} meses</span>
            </div>
            <Slider
              min={12}
@@ -78,7 +78,7 @@ export function LoanCalculator({ vehiclePrice, currency }: LoanCalculatorProps) 
         {/* Interest Rate */}
         <div className="space-y-2">
            <div className="flex justify-between text-sm">
-              <Label>Interest Rate (%)</Label>
+              <Label>Tasa de Interés (%)</Label>
            </div>
            <Input
              type="number"
@@ -91,14 +91,14 @@ export function LoanCalculator({ vehiclePrice, currency }: LoanCalculatorProps) 
       </div>
 
       <div className="bg-secondary/50 rounded-lg p-4 text-center space-y-1">
-         <p className="text-sm text-muted-foreground">Estimated Monthly Payment</p>
+         <p className="text-sm text-muted-foreground">Cuota Mensual Estimada</p>
          <p className="text-3xl font-serif font-bold text-primary">
             {currency} {monthlyPayment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
          </p>
       </div>
 
       <Button variant="outline" className="w-full text-xs">
-         Apply for Financing
+         Solicitar Financiamiento
       </Button>
     </div>
   )

@@ -46,14 +46,14 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8 pb-8 border-b border-border/50">
         <div>
-          <Badge variant="premium" className="mb-2">Full Inventory</Badge>
-          <h1 className="text-4xl font-serif font-bold text-foreground">Explore Our Collection</h1>
+          <Badge variant="premium" className="mb-2">Inventario Completo</Badge>
+          <h1 className="text-4xl font-serif font-bold text-foreground">Explora Nuestra Colección</h1>
           <p className="text-muted-foreground mt-2 max-w-2xl">
-            Discover a curated selection of the world&apos;s finest automobiles. From high-performance sports cars to luxurious SUVs.
+            Descubre una selección curada de los mejores automóviles del mundo. Desde autos deportivos de alto rendimiento hasta lujosos SUVs.
           </p>
         </div>
         <div className="text-sm font-medium text-muted-foreground">
-          Showing <span className="text-foreground font-bold">{cars.length}</span> vehicles
+          Mostrando <span className="text-foreground font-bold">{cars.length}</span> vehículos
         </div>
       </div>
 

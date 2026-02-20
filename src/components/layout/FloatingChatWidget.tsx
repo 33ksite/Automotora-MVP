@@ -25,7 +25,7 @@ export function FloatingChatWidget() {
             <div className="p-4 border-b border-border/50 bg-eclipse text-white flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_5px_rgba(74,222,128,0.5)]" />
-                <h3 className="font-semibold text-sm tracking-wide">Asistente Range Rover</h3>
+                <h3 className="font-semibold text-sm tracking-wide">Asistente Virtual</h3>
               </div>
               <Button
                 variant="ghost"
@@ -41,7 +41,7 @@ export function FloatingChatWidget() {
             <div className="flex-1 p-4 bg-muted/20 overflow-y-auto space-y-4">
               <div className="flex justify-start">
                 <div className="bg-white border border-border/30 text-foreground rounded-lg rounded-tl-none p-3 max-w-[80%] text-sm shadow-sm">
-                  Hola, bienvenido a Range Rover. ¿En qué puedo ayudarte hoy?
+                  Hola, bienvenido a LuxeAuto. ¿En qué puedo ayudarte hoy?
                 </div>
               </div>
                <div className="flex justify-end">

@@ -15,14 +15,14 @@ export function FinanceTeaser() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
 
            <div className="max-w-2xl space-y-6">
-              <span className="text-gold font-medium tracking-widest text-sm uppercase">Financial Services</span>
+              <span className="text-gold font-medium tracking-widest text-sm uppercase">Servicios Financieros</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-                 Tailored Financing Solutions
+                 Soluciones de Financiamiento a Medida
               </h2>
               <p className="text-lg text-primary-foreground/80 leading-relaxed max-w-xl">
-                 Secure your dream vehicle with competitive rates and flexible terms.
-                 Our digital application process provides pre-approval in minutes,
-                 allowing you to shop with confidence.
+                 Asegura el vehículo de tus sueños con tasas competitivas y plazos flexibles.
+                 Nuestro proceso de solicitud digital proporciona preaprobación en minutos,
+                 permitiéndote comprar con confianza.
               </p>
 
               <div className="flex flex-wrap gap-8 pt-4">
@@ -31,8 +31,8 @@ export function FinanceTeaser() {
                        <Calculator className="h-5 w-5 text-gold" />
                     </div>
                     <div>
-                       <h4 className="font-bold text-sm">Payment Calculator</h4>
-                       <p className="text-xs text-white/60">Estimate your monthly payments</p>
+                       <h4 className="font-bold text-sm">Calculadora de Pagos</h4>
+                       <p className="text-xs text-white/60">Estima tus cuotas mensuales</p>
                     </div>
                  </div>
 
@@ -41,8 +41,8 @@ export function FinanceTeaser() {
                        <BadgeCheck className="h-5 w-5 text-gold" />
                     </div>
                     <div>
-                       <h4 className="font-bold text-sm">Instant Pre-Approval</h4>
-                       <p className="text-xs text-white/60">No impact on credit score</p>
+                       <h4 className="font-bold text-sm">Preaprobación Instantánea</h4>
+                       <p className="text-xs text-white/60">Sin impacto en tu puntaje crediticio</p>
                     </div>
                  </div>
               </div>
@@ -50,10 +50,10 @@ export function FinanceTeaser() {
 
            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
               <Button size="lg" className="bg-gold text-primary hover:bg-gold/90 shadow-xl shadow-gold/20 h-14 px-8 text-base">
-                 Apply for Financing <ArrowRight className="ml-2 h-5 w-5" />
+                 Solicitar Financiamiento <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 h-14 px-8 text-base">
-                 View Current Rates
+                 Ver Tasas Actuales
               </Button>
            </div>
 
