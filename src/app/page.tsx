@@ -1,55 +1,51 @@
-import * as React from "react"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { HeroSection } from "@/components/features/home/HeroSection"
-import { ProductGrid } from "@/components/features/catalog/ProductGrid"
-import { FinanceTeaser } from "@/components/features/home/FinanceTeaser"
-import { SellYourCar } from "@/components/features/home/SellYourCar"
-import { Button } from "@/components/ui/Button"
-import { getAllCars } from "@/lib/mock-db"
+import { supabase } from "@/lib/supabase";
+import { Vehicle } from "@/types";
+import { VehicleCard } from "@/components/ui/vehicle-card";
+
+export const revalidate = 0; // Disable cache for demo since data might change
 
 export default async function Home() {
-  // Fetch a few featured cars
-  const featuredCars = (await getAllCars()).slice(0, 3)
+  const { data: vehicles, error } = await supabase
+    .from("vehicles")
+    .select("*")
+    .eq('available', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error("Error fetching vehicles:", error);
+  }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <HeroSection />
+    <main className="min-h-screen bg-zinc-50 dark:bg-zinc-950 px-6 py-24 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto space-y-12">
+        <header className="space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">
+            Catálogo de Vehículos
+          </h1>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl">
+            Explorá nuestra selección de vehículos premium. Modelos recientes, en excelente estado y con financiación a tu medida.
+          </p>
+        </header>
 
-      {/* Featured Inventory Preview */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
-              <div className="max-w-2xl">
-                 <span className="text-gold font-medium tracking-widest text-sm uppercase mb-2 block">Our Collection</span>
-                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">Curated Excellence</h2>
-                 <p className="text-muted-foreground text-lg leading-relaxed">
-                    Hand-picked selection of the most exclusive vehicles available for immediate delivery.
-                 </p>
-              </div>
-              <Button asChild variant="outline" className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors h-12 px-6">
-                 <Link href="/catalog">
-                    View All Inventory <ArrowRight className="h-4 w-4" />
-                 </Link>
-              </Button>
-           </div>
+        {error && (
+          <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/50">
+            Error al cargar los vehículos. Por favor, intentá nuevamente más tarde.
+          </div>
+        )}
 
-           <ProductGrid cars={featuredCars} />
-
-           <div className="mt-12 text-center md:hidden">
-              <Button asChild className="w-full bg-primary text-primary-foreground h-12">
-                 <Link href="/catalog">Explore Full Catalog</Link>
-              </Button>
-           </div>
-        </div>
-      </section>
-
-      {/* Finance & Services */}
-      <FinanceTeaser />
-
-      {/* Sell/Trade-In Funnel */}
-      <SellYourCar />
-    </div>
-  )
+        {!error && (!vehicles || vehicles.length === 0) ? (
+          <div className="py-24 text-center space-y-4">
+            <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">No hay vehículos disponibles</h2>
+            <p className="text-zinc-500 dark:text-zinc-400">Actualmente no contamos con vehículos en inventario.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {vehicles?.map((vehicle: Vehicle, idx) => (
+              <VehicleCard key={vehicle.id} vehicle={vehicle} priority={idx < 6} />
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+  );
 }

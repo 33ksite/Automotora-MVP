@@ -32,7 +32,7 @@ export function FinanceTeaser() {
                     </div>
                     <div>
                        <h4 className="font-bold text-sm">Calculadora de Pagos</h4>
-                       <p className="text-xs text-white/60">Estima tus cuotas mensuales</p>
+                       <p className="text-xs text-white/80">Estima tus cuotas mensuales</p>
                     </div>
                  </div>
 
@@ -42,7 +42,7 @@ export function FinanceTeaser() {
                     </div>
                     <div>
                        <h4 className="font-bold text-sm">Preaprobación Instantánea</h4>
-                       <p className="text-xs text-white/60">Sin impacto en tu puntaje crediticio</p>
+                       <p className="text-xs text-white/80">Sin impacto en tu puntaje crediticio</p>
                     </div>
                  </div>
               </div>

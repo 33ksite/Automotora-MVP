@@ -1,0 +1,959 @@
+{
+  "/": {
+    "get": {
+      "produces": [
+        "application/openapi+json",
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        }
+      },
+      "summary": "OpenAPI description (this document)",
+      "tags": [
+        "Introspection"
+      ]
+    }
+  },
+  "/leads": {
+    "get": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.leads.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.phone"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.extracted_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.score"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.opted_out"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.created_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.updated_at"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/order"
+        },
+        {
+          "$ref": "#/parameters/range"
+        },
+        {
+          "$ref": "#/parameters/rangeUnit"
+        },
+        {
+          "$ref": "#/parameters/offset"
+        },
+        {
+          "$ref": "#/parameters/limit"
+        },
+        {
+          "$ref": "#/parameters/preferCount"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "items": {
+              "$ref": "#/definitions/leads"
+            },
+            "type": "array"
+          }
+        },
+        "206": {
+          "description": "Partial Content"
+        }
+      },
+      "tags": [
+        "leads"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/body.leads"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/preferPost"
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Created"
+        }
+      },
+      "tags": [
+        "leads"
+      ]
+    },
+    "delete": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.leads.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.phone"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.extracted_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.score"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.opted_out"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.created_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.updated_at"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "leads"
+      ]
+    },
+    "patch": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.leads.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.phone"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.extracted_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.score"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.opted_out"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.created_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.leads.updated_at"
+        },
+        {
+          "$ref": "#/parameters/body.leads"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "leads"
+      ]
+    }
+  },
+  "/vehicles": {
+    "get": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.brand"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.model"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.operation"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.version"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.year"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.mileage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.transmission"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.fuel_type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.price"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.currency"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.color"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.image_url"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.available"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.extra_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.created_at"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/order"
+        },
+        {
+          "$ref": "#/parameters/range"
+        },
+        {
+          "$ref": "#/parameters/rangeUnit"
+        },
+        {
+          "$ref": "#/parameters/offset"
+        },
+        {
+          "$ref": "#/parameters/limit"
+        },
+        {
+          "$ref": "#/parameters/preferCount"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "items": {
+              "$ref": "#/definitions/vehicles"
+            },
+            "type": "array"
+          }
+        },
+        "206": {
+          "description": "Partial Content"
+        }
+      },
+      "tags": [
+        "vehicles"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/body.vehicles"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/preferPost"
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Created"
+        }
+      },
+      "tags": [
+        "vehicles"
+      ]
+    },
+    "delete": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.brand"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.model"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.operation"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.version"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.year"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.mileage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.transmission"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.fuel_type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.price"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.currency"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.color"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.image_url"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.available"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.extra_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.created_at"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "vehicles"
+      ]
+    },
+    "patch": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.brand"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.model"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.operation"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.version"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.year"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.mileage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.transmission"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.fuel_type"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.price"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.currency"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.color"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.image_url"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.available"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.extra_data"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.vehicles.created_at"
+        },
+        {
+          "$ref": "#/parameters/body.vehicles"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "vehicles"
+      ]
+    }
+  },
+  "/messages": {
+    "get": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.messages.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.conversation_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.role"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.content"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.wa_message_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.metadata"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.created_at"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/order"
+        },
+        {
+          "$ref": "#/parameters/range"
+        },
+        {
+          "$ref": "#/parameters/rangeUnit"
+        },
+        {
+          "$ref": "#/parameters/offset"
+        },
+        {
+          "$ref": "#/parameters/limit"
+        },
+        {
+          "$ref": "#/parameters/preferCount"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "items": {
+              "$ref": "#/definitions/messages"
+            },
+            "type": "array"
+          }
+        },
+        "206": {
+          "description": "Partial Content"
+        }
+      },
+      "tags": [
+        "messages"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/body.messages"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/preferPost"
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Created"
+        }
+      },
+      "tags": [
+        "messages"
+      ]
+    },
+    "delete": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.messages.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.conversation_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.role"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.content"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.wa_message_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.metadata"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.created_at"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "messages"
+      ]
+    },
+    "patch": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.messages.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.conversation_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.role"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.content"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.wa_message_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.metadata"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.messages.created_at"
+        },
+        {
+          "$ref": "#/parameters/body.messages"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "messages"
+      ]
+    }
+  },
+  "/tenants": {
+    "get": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.tenants.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.config"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_phone_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_token"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.created_at"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/order"
+        },
+        {
+          "$ref": "#/parameters/range"
+        },
+        {
+          "$ref": "#/parameters/rangeUnit"
+        },
+        {
+          "$ref": "#/parameters/offset"
+        },
+        {
+          "$ref": "#/parameters/limit"
+        },
+        {
+          "$ref": "#/parameters/preferCount"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "items": {
+              "$ref": "#/definitions/tenants"
+            },
+            "type": "array"
+          }
+        },
+        "206": {
+          "description": "Partial Content"
+        }
+      },
+      "tags": [
+        "tenants"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/body.tenants"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/preferPost"
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Created"
+        }
+      },
+      "tags": [
+        "tenants"
+      ]
+    },
+    "delete": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.tenants.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.config"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_phone_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_token"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.created_at"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "tenants"
+      ]
+    },
+    "patch": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.tenants.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.name"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.config"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_phone_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.whatsapp_token"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.tenants.created_at"
+        },
+        {
+          "$ref": "#/parameters/body.tenants"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "tenants"
+      ]
+    }
+  },
+  "/conversations": {
+    "get": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.conversations.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.lead_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.message_count"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.context_summary"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.status"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.started_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.updated_at"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/order"
+        },
+        {
+          "$ref": "#/parameters/range"
+        },
+        {
+          "$ref": "#/parameters/rangeUnit"
+        },
+        {
+          "$ref": "#/parameters/offset"
+        },
+        {
+          "$ref": "#/parameters/limit"
+        },
+        {
+          "$ref": "#/parameters/preferCount"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "items": {
+              "$ref": "#/definitions/conversations"
+            },
+            "type": "array"
+          }
+        },
+        "206": {
+          "description": "Partial Content"
+        }
+      },
+      "tags": [
+        "conversations"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/body.conversations"
+        },
+        {
+          "$ref": "#/parameters/select"
+        },
+        {
+          "$ref": "#/parameters/preferPost"
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Created"
+        }
+      },
+      "tags": [
+        "conversations"
+      ]
+    },
+    "delete": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.conversations.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.lead_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.message_count"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.context_summary"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.status"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.started_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.updated_at"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "conversations"
+      ]
+    },
+    "patch": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/rowFilter.conversations.id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.lead_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.tenant_id"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.stage"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.message_count"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.context_summary"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.status"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.started_at"
+        },
+        {
+          "$ref": "#/parameters/rowFilter.conversations.updated_at"
+        },
+        {
+          "$ref": "#/parameters/body.conversations"
+        },
+        {
+          "$ref": "#/parameters/preferReturn"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No Content"
+        }
+      },
+      "tags": [
+        "conversations"
+      ]
+    }
+  }
+}

@@ -1,7 +1,7 @@
 // src/lib/mock-db.ts
 import { Car, FilterOptions, FuelType } from "@/types/automotive";
 
-const cars: Car[] = [
+let cars: Car[] = [
   {
     id: "1",
     slug: "range-rover-sport-autobiography",
@@ -13,7 +13,7 @@ const cars: Car[] = [
     mileage: 0,
     condition: "New",
     bodyType: "SUV",
-    color: "Verde Oscuro",
+    color: "Blanco",
     transmission: "Automatic",
     driveType: "AWD",
     engine: {
@@ -41,9 +41,7 @@ const cars: Car[] = [
       "Cámara 360",
     ],
     images: [
-      "https://images.unsplash.com/photo-1754254013090-21573dc4e7d5?fm=jpg&q=60&w=3000&auto=format&fit=crop", // Main Green Range Rover
-      "https://images.unsplash.com/photo-1675257020144-8d96d246294d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Interior detail (generic luxury)
-      "https://images.unsplash.com/photo-1627454820574-fb6aae3a505b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Wheel detail (generic)
+      "/cars/d83af97963a12fa203a32b51f0d280e0.jpg",
     ],
     description:
       "El epítome del lujo deportivo. El nuevo Range Rover Sport combina una modernidad dramática con un carácter distintivo y un rendimiento electrificado.",
@@ -88,8 +86,7 @@ const cars: Car[] = [
       "Jaula Antivuelco",
     ],
     images: [
-      "https://images.unsplash.com/photo-1503376763036-066120622c74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Generic Porsche
-      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Interior
+      "/cars/Used-2023-Porsche-911-GT3-RS-1711212291.jpg",
     ],
     description:
       "Nacido en la pista. El 911 GT3 RS está diseñado para el máximo rendimiento con tecnología de carreras adaptada para la carretera.",
@@ -134,7 +131,7 @@ const cars: Car[] = [
       "Sistema de Entretenimiento Trasero",
     ],
     images: [
-      "https://images.unsplash.com/photo-1520031441872-265149a9e690?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // G Wagon
+      "/cars/7KbpMs0mMz5nJT1DKRwQGwBlTE7gYae85KJHmvXB.jpg",
     ],
     description:
       "Un icono de rendimiento y lujo. El G 63 combina capacidad todoterreno con el rendimiento de AMG y equipamiento exclusivo.",
@@ -179,7 +176,7 @@ const cars: Car[] = [
       "Paquete Exterior M Carbon",
     ],
     images: [
-      "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // M4
+      "/cars/0007df9bea74ccb4f2f9d57d465f4119.webp",
     ],
     description:
       "Dinámica de conducción en su forma más pura. El M4 Competition ofrece un rendimiento lleno de adrenalina con usabilidad diaria.",
@@ -196,7 +193,7 @@ const cars: Car[] = [
     mileage: 5000,
     condition: "Used",
     bodyType: "Sedan",
-    color: "Azul Profundo Metalizado",
+    color: "Gris Metalizado",
     transmission: "Automatic", // Single speed
     driveType: "AWD",
     engine: {
@@ -224,13 +221,13 @@ const cars: Car[] = [
       "Pantalla Trasera",
     ],
     images: [
-      "https://images.unsplash.com/photo-1617704548623-29a198be5c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Model S
+      "/cars/Used-2023-Tesla-Model-S-Plaid-1716313171.jpg",
     ],
     description:
       "Más allá de lo absurdo. El coche de producción con la aceleración más rápida en la actualidad.",
     stockStatus: "Sold",
   },
-    {
+  {
     id: "6",
     slug: "audi-rs-e-tron-gt",
     make: "Audi",
@@ -241,7 +238,7 @@ const cars: Car[] = [
     mileage: 200,
     condition: "New",
     bodyType: "Sedan",
-    color: "Gris Kemora",
+    color: "Blanco",
     transmission: "Automatic", // 2-speed
     driveType: "AWD",
     engine: {
@@ -269,13 +266,225 @@ const cars: Car[] = [
       "Frenos de Carburo de Tungsteno",
     ],
     images: [
-      "https://images.unsplash.com/photo-1614026480418-bd11fdb9fa06?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // e-tron
+      "/cars/upload-1.webp",
     ],
     description:
       "Arte de rendimiento eléctrico. El RS e-tron GT representa el futuro de Audi Sport.",
     stockStatus: "In Stock",
   },
+  {
+    id: "7",
+    slug: "chevrolet-tracker",
+    make: "Chevrolet",
+    model: "Tracker",
+    year: 2023,
+    price: 26990,
+    currency: "USD",
+    mileage: 15000,
+    condition: "Used",
+    bodyType: "SUV",
+    color: "Blanco",
+    transmission: "Manual",
+    driveType: "FWD",
+    engine: {
+      type: "1.2L Turbo",
+      horsepower: 130,
+      torque: 190,
+      fuelType: "Gasoline",
+    },
+    performance: {
+      acceleration: 10.5,
+      topSpeed: 185,
+    },
+    dimensions: {
+      length: 4270,
+      width: 1791,
+      height: 1626,
+      wheelbase: 2570,
+      weight: 1250,
+    },
+    features: [
+      "Pantalla Táctil 8 pulgadas",
+      "Apple CarPlay y Android Auto",
+      "6 Airbags",
+      "Cámara de Reversa",
+    ],
+    images: [
+      "/cars/59a24025a23242a8817c7a3d25820751_1721052303579.webp",
+    ],
+    description: "Versatilidad y eficiencia en un SUV compacto ideal para la ciudad y la ruta.",
+    stockStatus: "In Stock",
+  },
+  {
+    id: "8",
+    slug: "suzuki-swift-hybrid",
+    make: "Suzuki",
+    model: "Swift Hybrid",
+    year: 2024,
+    price: 18990,
+    currency: "USD",
+    mileage: 0,
+    condition: "New",
+    bodyType: "Hatchback",
+    color: "Gris Plata",
+    transmission: "Manual",
+    driveType: "FWD",
+    engine: {
+      type: "1.2L Mild Hybrid",
+      horsepower: 83,
+      torque: 107,
+      fuelType: "Hybrid",
+    },
+    performance: {
+      acceleration: 13.1,
+      topSpeed: 165,
+    },
+    dimensions: {
+      length: 3840,
+      width: 1735,
+      height: 1495,
+      wheelbase: 2450,
+      weight: 911,
+    },
+    features: [
+      "Sistema Mild Hybrid",
+      "Climatizador Automático",
+      "Llantas de Aleación",
+      "Faros LED",
+    ],
+    images: [
+      "/cars/atfzj11ho7wsuaba3skvfv31j.jpg",
+    ],
+    description: "El clásico hatchback de Suzuki, ahora con tecnología híbrida para máximo ahorro.",
+    stockStatus: "In Stock",
+  },
+  {
+    id: "9",
+    slug: "volkswagen-polo-track",
+    make: "Volkswagen",
+    model: "Polo Track",
+    year: 2024,
+    price: 19490,
+    currency: "USD",
+    mileage: 0,
+    condition: "New",
+    bodyType: "Hatchback",
+    color: "Gris Plata",
+    transmission: "Manual",
+    driveType: "FWD",
+    engine: {
+      type: "1.6L MSI",
+      horsepower: 110,
+      torque: 155,
+      fuelType: "Gasoline",
+    },
+    performance: {
+      acceleration: 10.8,
+      topSpeed: 185,
+    },
+    dimensions: {
+      length: 4074,
+      width: 1751,
+      height: 1471,
+      wheelbase: 2566,
+      weight: 1070,
+    },
+    features: [
+      "Control de Estabilidad (ESC)",
+      "Radio con Bluetooth",
+      "4 Airbags",
+      "Asistente de Arranque en Pendiente",
+    ],
+    images: [
+      "/cars/vw-polo-track.webp",
+    ],
+    description: "La puerta de entrada a la familia Volkswagen. Robusto, seguro y confiable.",
+    stockStatus: "In Stock",
+  },
+  {
+    id: "10",
+    slug: "hyundai-hb20",
+    make: "Hyundai",
+    model: "HB20",
+    year: 2023,
+    price: 17500,
+    currency: "USD",
+    mileage: 22000,
+    condition: "Used",
+    bodyType: "Hatchback",
+    color: "Gris Oscuro",
+    transmission: "Manual",
+    driveType: "FWD",
+    engine: {
+      type: "1.0L",
+      horsepower: 80,
+      torque: 100,
+      fuelType: "Gasoline",
+    },
+    performance: {
+      acceleration: 14.5,
+      topSpeed: 161,
+    },
+    dimensions: {
+      length: 3940,
+      width: 1720,
+      height: 1470,
+      wheelbase: 2530,
+      weight: 990,
+    },
+    features: [
+      "Radio con Bluetooth USB",
+      "Aire Acondicionado",
+      "Dirección Eléctrica",
+      "Vidrios Eléctricos",
+    ],
+    images: [
+      "/cars/Lanzamiento_ Hyundai HB20 MY2023 Precios 0km Autoblog Uruguay Precios 20229.jpg",
+    ],
+    description: "Compacto y económico, líder en ventas por su excelente relación calidad-precio.",
+    stockStatus: "In Stock",
+  }
 ];
+
+export async function addCarToDb(carObj: Partial<Car>) {
+  const newCar: Car = {
+    id: Date.now().toString(),
+    slug: carObj.model?.toLowerCase().replace(/\s+/g, '-') || `auto-${Date.now()}`,
+    make: carObj.make || "Unknown Make",
+    model: carObj.model || "Unknown Model",
+    year: carObj.year || new Date().getFullYear(),
+    price: carObj.price || 0,
+    currency: "USD",
+    mileage: 0,
+    condition: "New",
+    bodyType: carObj.bodyType || "Sedan",
+    color: carObj.color || "Gris",
+    transmission: "Automatic",
+    driveType: "AWD",
+    engine: {
+      type: "Desconocido",
+      horsepower: 0,
+      torque: 0,
+      fuelType: "Gasoline",
+    },
+    performance: {
+      acceleration: 0,
+      topSpeed: 0,
+    },
+    dimensions: {
+      length: 0,
+      width: 0,
+      height: 0,
+      wheelbase: 0,
+      weight: 0,
+    },
+    features: [],
+    images: ["/cars/Used-2023-Tesla-Model-S-Plaid-1716313171.jpg"], // local high-end placeholder
+    description: "Nuevo auto agregado desde el catálogo rápido.",
+    stockStatus: "In Stock",
+  };
+  cars.unshift(newCar);
+}
 
 export async function getAllCars(filters?: FilterOptions): Promise<Car[]> {
   // Simulate network delay
@@ -309,21 +518,21 @@ export async function getAllCars(filters?: FilterOptions): Promise<Car[]> {
       );
     }
     if (filters.mileageRange) {
-        filteredCars = filteredCars.filter(
-            (car) =>
-              car.mileage >= filters.mileageRange![0] &&
-              car.mileage <= filters.mileageRange![1]
-        );
+      filteredCars = filteredCars.filter(
+        (car) =>
+          car.mileage >= filters.mileageRange![0] &&
+          car.mileage <= filters.mileageRange![1]
+      );
     }
     if (filters.fuelType && filters.fuelType.length > 0) {
-        filteredCars = filteredCars.filter((car) =>
-           filters.fuelType?.includes(car.engine.fuelType)
-        );
+      filteredCars = filteredCars.filter((car) =>
+        filters.fuelType?.includes(car.engine.fuelType)
+      );
     }
     if (filters.color && filters.color.length > 0) {
-        filteredCars = filteredCars.filter(car =>
-            filters.color?.some(c => car.color.toLowerCase().includes(c.toLowerCase()))
-        );
+      filteredCars = filteredCars.filter(car =>
+        filters.color?.some(c => car.color.toLowerCase().includes(c.toLowerCase()))
+      );
     }
   }
 

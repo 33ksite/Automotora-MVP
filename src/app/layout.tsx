@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { FloatingChatWidget } from "@/components/layout/FloatingChatWidget";
+import { ConditionalWrapper } from "@/components/layout/ConditionalWrapper";
+import { ChatProvider } from "@/lib/context/ChatContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -30,12 +29,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground selection:bg-accent/30`}
       >
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <FloatingChatWidget />
+        <ChatProvider>
+          <ConditionalWrapper>
+            {children}
+          </ConditionalWrapper>
+        </ChatProvider>
       </body>
     </html>
   );

@@ -14,7 +14,11 @@ const navLinks = [
   { href: "#", label: "Propietarios" },
 ]
 
+import { usePathname } from "next/navigation"
+
 export function Navbar() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
 
@@ -30,7 +34,7 @@ export function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled || isOpen
+        scrolled || isOpen || !isHome
           ? "bg-background/90 backdrop-blur-md shadow-sm py-4 border-b border-border/50"
           : "bg-transparent py-6"
       )}
@@ -40,7 +44,10 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-serif font-bold tracking-tighter text-foreground z-50 relative"
+            className={cn(
+              "text-2xl font-serif font-bold tracking-tighter transition-colors z-50 relative",
+              scrolled || isOpen || !isHome ? "text-foreground" : "text-white"
+            )}
           >
             LUXE AUTO
           </Link>
@@ -52,8 +59,8 @@ export function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative group",
-                  scrolled ? "text-foreground" : "text-foreground"
+                  "text-sm font-medium transition-colors hover:text-gold relative group",
+                  scrolled || isOpen || !isHome ? "text-foreground" : "text-white"
                 )}
               >
                 {link.label}
@@ -64,22 +71,25 @@ export function Navbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary">
+            <Button variant="ghost" size="icon" className={cn("hover:bg-primary/10 hover:text-primary", !scrolled && !isOpen && isHome && "text-white")}>
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary">
+            <Button variant="ghost" size="icon" className={cn("hover:bg-primary/10 hover:text-primary", !scrolled && !isOpen && isHome && "text-white")}>
               <User className="h-5 w-5" />
             </Button>
-            <Button asChild variant="premium" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-md">
+            <Button asChild variant="premium" size="sm" className={cn("bg-primary text-primary-foreground hover:bg-primary/90 shadow-md", !scrolled && !isOpen && isHome && "bg-white text-black border-transparent")}>
               <Link href="/catalog">
-                 <Car className="mr-2 h-4 w-4" /> Ver Stock
+                <Car className="mr-2 h-4 w-4" /> Ver Stock
               </Link>
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-foreground hover:bg-primary/10 rounded-full transition-colors z-50 relative"
+            className={cn(
+              "md:hidden p-2 rounded-full transition-colors z-50 relative",
+              scrolled || isOpen || !isHome ? "text-foreground hover:bg-primary/10" : "text-white hover:bg-white/10"
+            )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -112,14 +122,14 @@ export function Navbar() {
             </div>
 
             <div className="flex flex-col gap-4 mt-auto">
-               <Button asChild className="w-full bg-primary text-primary-foreground py-6 text-lg">
-                  <Link href="/catalog" onClick={() => setIsOpen(false)}>
-                    Ver Inventario
-                  </Link>
-               </Button>
-               <Button variant="outline" className="w-full py-6 text-lg border-primary text-primary">
-                  Iniciar Sesión
-               </Button>
+              <Button asChild className="w-full bg-primary text-primary-foreground py-6 text-lg">
+                <Link href="/catalog" onClick={() => setIsOpen(false)}>
+                  Ver Inventario
+                </Link>
+              </Button>
+              <Button variant="outline" className="w-full py-6 text-lg border-primary text-primary">
+                Iniciar Sesión
+              </Button>
             </div>
           </motion.div>
         )}

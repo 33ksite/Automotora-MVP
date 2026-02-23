@@ -41,7 +41,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const filterOptions = await getUniqueFilters()
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen">
+    <div className="container mx-auto px-4 pt-32 pb-8 min-h-screen">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8 pb-8 border-b border-border/50">
@@ -61,12 +61,12 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
         {/* Sidebar */}
         <div className="lg:col-span-1">
           <FilterSidebar
-             options={{
-               makes: filterOptions.makes,
-               bodyTypes: filterOptions.bodyTypes,
-               colors: filterOptions.colors,
-               fuelTypes: filterOptions.fuelTypes
-             }}
+            options={{
+              makes: filterOptions.makes,
+              bodyTypes: filterOptions.bodyTypes,
+              colors: filterOptions.colors,
+              fuelTypes: filterOptions.fuelTypes
+            }}
           />
         </div>
 
