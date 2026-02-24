@@ -33,7 +33,7 @@ export function ChatWidget() {
             setMessages([
                 {
                     role: "assistant",
-                    text: "Bienvenido a Dante Automóviles. Soy tu asesor virtual. ¿En qué vehículo estás interesado hoy?",
+                    text: "Hola! Soy Dante, tu asesor virtual. ¿En que puedo ayudarte?",
                 },
             ]);
         }
@@ -198,12 +198,12 @@ export function ChatWidget() {
             <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsChatOpen(!isChatOpen)}
                 className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-2xl shadow-primary/30 text-white z-50 pointer-events-auto"
                 aria-label="Abrir chat de asistencia"
             >
                 <AnimatePresence mode="wait">
-                    {isOpen ? (
+                    {isChatOpen ? (
                         <motion.div
                             key="close"
                             initial={{ opacity: 0, rotate: -90 }}

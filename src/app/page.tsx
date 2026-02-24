@@ -6,6 +6,7 @@ import { FeaturedVehicles } from "@/components/features/home/FeaturedVehicles";
 import { ServicesSection } from "@/components/features/home/ServicesSection";
 import { ContactSection } from "@/components/features/home/ContactSection";
 import { BrandCarousel } from "@/components/features/home/BrandCarousel";
+import { HomepageCatalog } from "@/components/features/home/HomepageCatalog";
 
 export const revalidate = 0; // Disable cache for demo since data might change
 
@@ -197,28 +198,11 @@ export default async function Home() {
       <ContactSection />
 
       {/* Full Catalog Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-24 space-y-12">
-        <header className="space-y-4">
-          <span className="px-4 py-1.5 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full border border-primary/20">
-            {vehicles && vehicles.length > 0 ? "Inventario Real" : "Catálogo Dante"}
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground font-serif">
-            Catálogo completo
-          </h2>
-        </header>
-
-        {fetchError && !vehicles && (
-          <div className="p-4 rounded-xl bg-amber-50 text-amber-600 border border-amber-100 text-sm font-medium">
-            Aviso: Usando datos de demostración mientras se configura la conexión a base de datos.
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {displayVehicles.map((vehicle: Vehicle, idx) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle} priority={idx < 6} />
-          ))}
-        </div>
-      </div>
+      <HomepageCatalog
+        vehicles={displayVehicles}
+        fetchError={fetchError}
+        hasRealData={!!(vehicles && vehicles.length > 0)}
+      />
     </main>
   );
 }

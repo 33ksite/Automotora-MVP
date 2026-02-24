@@ -119,8 +119,10 @@ export function HeroSlider() {
                                         </>
                                     ) : SLIDES[current].title.includes("Tasa Cero") ? (
                                         <>
-                                            {SLIDES[current].title.split("Tasa Cero")[0]}
-                                            <span className="text-primary font-black">TASA CERO</span>
+                                            {SLIDES[current].title.split("-")[0].trim()} <br />
+
+                                            {SLIDES[current].title.split("-")[1].split("Tasa Cero")[0].trim()}{" "}
+                                            <span className="text-primary font-black tracking-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>TASA CERO</span>
                                         </>
                                     ) : SLIDES[current].title}
                                 </h2>

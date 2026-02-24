@@ -20,7 +20,7 @@ export function FeaturedVehicles({ vehicles }: FeaturedVehiclesProps) {
     const filteredVehicles = React.useMemo(() => {
         return vehicles.filter(v =>
             filter === "0KM" ? v.mileage === 0 : v.mileage > 0
-        ).slice(0, 5);
+        ).slice(0, 3);
     }, [vehicles, filter]);
 
     return (
