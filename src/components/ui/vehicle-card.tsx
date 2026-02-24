@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Vehicle } from "@/types";
-import { Calendar, Gauge, Cog, Fuel, Palette } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -65,82 +66,85 @@ const getFallbackImage = (brand: string, model: string, type: string, id: string
 };
 
 export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
-  const imageUrl = vehicle.image_url || getFallbackImage(vehicle.brand, vehicle.model, vehicle.type, vehicle.id);
+  let imageUrl = getFallbackImage(vehicle.brand, vehicle.model, vehicle.type, vehicle.id);
+
+  if (vehicle.image_url) {
+    if (vehicle.image_url.startsWith('http')) {
+      imageUrl = vehicle.image_url;
+    } else {
+      imageUrl = `https://riqguufkfqlvfrayhvbt.storage.supabase.co/storage/v1/object/public/vehicles/${encodeURIComponent(vehicle.image_url)}`;
+    }
+  }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -5 }}
-      className="group overflow-hidden rounded-2xl bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className="group bg-white border border-gray-100 hover:border-accent transition-all duration-300 rounded-2xl overflow-hidden shadow-sm hover:shadow-md"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+      <div className="relative aspect-[16/10] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
         <Image
           src={imageUrl}
           alt={`${vehicle.brand} ${vehicle.model}`}
           fill
           priority={priority}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        {vehicle.year >= new Date().getFullYear() && (
-          <div className="absolute top-3 left-3 rounded-full px-3 py-1 bg-white/90 dark:bg-black/90 text-xs font-semibold backdrop-blur-md text-zinc-900 dark:text-zinc-100">
-            Nuevo
+
+        {/* Technical Top Labels */}
+        <div className="absolute top-0 left-0 flex flex-col gap-0.5">
+          <div className="bg-accent text-white px-3 py-1.5 text-[9px] font-black uppercase tracking-widest rounded-br-lg">
+            {vehicle.brand}
           </div>
-        )}
+          {vehicle.mileage === 0 && (
+            <div className="bg-primary text-white px-3 py-1 text-[8px] font-black uppercase tracking-widest rounded-br-md">
+              NUEVO 0KM
+            </div>
+          )}
+        </div>
       </div>
 
-      <div className="p-5 flex flex-col gap-3">
-        <div className="flex justify-between items-start gap-2">
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 line-clamp-1">
-              {vehicle.brand} {vehicle.model}
+      <div className="p-6 flex flex-col gap-4">
+        <div className="flex justify-between items-start">
+          <div className="space-y-1">
+            <h3 className="text-lg font-black tracking-tighter text-foreground uppercase leading-none">
+              {vehicle.model}
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium line-clamp-1">
+            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
               {vehicle.version || vehicle.type}
-            </p>
-          </div>
-          <div className="text-right flex flex-col items-end shrink-0">
-            {vehicle.operation && (
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 mb-1">
-                {vehicle.operation === "rent" ? "Alquiler" : vehicle.operation === "sale" ? "Venta" : vehicle.operation}
-              </span>
-            )}
-            <p className="text-lg font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
-              {vehicle.currency} {vehicle.price.toLocaleString("es-UY")}
             </p>
           </div>
         </div>
 
-        <div className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
+        {/* Info Grid (Minimal) */}
+        <div className="grid grid-cols-2 gap-y-2 border-y border-gray-50 py-4 my-2">
+          <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-tighter text-gray-500">
+            <span className="text-accent">MIL:</span> {vehicle.mileage.toLocaleString("es-UY")} KM
+          </div>
+          <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-tighter text-gray-500">
+            <span className="text-accent">AÑO:</span> {vehicle.year}
+          </div>
+          <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-tighter text-gray-500">
+            <span className="text-accent">COMB:</span> {vehicle.fuel_type || "N/A"}
+          </div>
+          <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-tighter text-gray-500">
+            <span className="text-accent">TRAN:</span> {vehicle.transmission?.substring(0, 3) || "MAN"}
+          </div>
+        </div>
 
-        <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-1">
-          <div className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5" />
-            <span>{vehicle.year}</span>
+        <div className="flex items-end justify-between">
+          <div className="space-y-0.5">
+            <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none">Precio Final</p>
+            <p className="text-2xl font-black text-primary tracking-tight">
+              {vehicle.currency} {vehicle.price.toLocaleString("es-UY")}
+            </p>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Gauge className="w-3.5 h-3.5" />
-            <span>{vehicle.mileage.toLocaleString("es-UY")} km</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Cog className="w-3.5 h-3.5" />
-            <span className="capitalize">{vehicle.transmission || "Manual"}</span>
-          </div>
-          {vehicle.fuel_type && (
-            <div className="flex items-center gap-1.5">
-              <Fuel className="w-3.5 h-3.5" />
-              <span className="capitalize">{vehicle.fuel_type}</span>
-            </div>
-          )}
-          {vehicle.color && (
-            <div className="col-span-2 flex items-center gap-1.5">
-              <Palette className="w-3.5 h-3.5" />
-              <span className="capitalize">Color: {vehicle.color}</span>
-            </div>
-          )}
+
+          <Button variant="ghost" size="icon" className="rounded-lg h-10 w-10 border border-gray-100 hover:bg-primary hover:text-white hover:border-primary transition-all group-hover:border-primary">
+            <ArrowUpRight className="h-4 w-4" />
+          </Button>
         </div>
       </div>
     </motion.div>

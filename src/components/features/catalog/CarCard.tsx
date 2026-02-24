@@ -14,13 +14,13 @@ interface CarCardProps {
 }
 
 export function CarCard({ car }: CarCardProps) {
-  const { addMessage, setIsChatOpen } = useChat();
+  const { triggerAIMessage } = useChat();
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl bg-card border border-border/50 shadow-sm transition-all hover:shadow-lg">
       <Link href={`/catalog/${car.slug}`} className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
         <Image
-          src={car.images[0]}
+          src={encodeURI(car.images[0])}
           alt={`${car.make} ${car.model}`}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -69,8 +69,7 @@ export function CarCard({ car }: CarCardProps) {
               className="border border-border/50 text-foreground hover:bg-muted"
               onClick={(e) => {
                 e.preventDefault();
-                setIsChatOpen(true);
-                addMessage(`Me interesa obtener más información sobre el ${car.year} ${car.make} ${car.model}. ¿Podrían ayudarme?`, 'user');
+                triggerAIMessage(`¡Hola! Me interesó este auto: ${car.year} ${car.make} ${car.model}. ¿Podés contarme más?`);
               }}
             >
               <MessageSquare className="h-4 w-4 mr-2" />

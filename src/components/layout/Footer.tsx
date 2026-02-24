@@ -2,150 +2,121 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, ArrowRight, CheckCircle2 } from "lucide-react"
-import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
+import { Facebook, Phone, Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react"
+
+const SHOWROOMS = [
+   {
+      name: "MONTEVIDEO",
+      address: "Av. Agraciada 3324",
+      phone: "091 838 500",
+   },
+   {
+      name: "ROCHA",
+      address: "Rambla Brava",
+      phone: "098 227 0463",
+   },
+   {
+      name: "LASCANO",
+      address: "Avenida 1304",
+      phone: "074 469 5264",
+   },
+]
+
+const NAV_LINKS = [
+   { label: "Catálogo 0KM", href: "/catalog" },
+   { label: "Mejores Usados", href: "/catalog" },
+   { label: "Gestión de Crédito", href: "#contacto" },
+   { label: "Sobre Nosotros", href: "#" },
+   { label: "Contacto", href: "#contacto" },
+]
 
 export function Footer() {
-   const [isOpenNow, setIsOpenNow] = React.useState(false)
-
-   React.useEffect(() => {
-      const now = new Date()
-      const hour = now.getHours()
-      const day = now.getDay()
-      // Open Mon-Sat (1-6), 9am - 7pm
-      if (day >= 1 && day <= 6 && hour >= 9 && hour < 19) {
-         setIsOpenNow(true)
-      }
-   }, [])
-
    return (
-      <footer className="bg-primary text-primary-foreground border-t border-white/10 pt-20 pb-10">
-         <div className="container mx-auto px-4">
-
-            {/* Top Section: Newsletter & Branding */}
-            <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16 border-b border-white/10 pb-12">
-               <div className="max-w-md space-y-4">
-                  <h2 className="text-3xl font-serif font-bold tracking-tight">LUXE AUTO</h2>
-                  <p className="text-white/70 leading-relaxed">
-                     Elevando la experiencia automotriz. Curamos los mejores vehículos del mundo para quienes exigen excelencia.
+      <footer className="bg-white border-t border-gray-200">
+         {/* Dynamic Upper Section */}
+         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-24 pb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
+               {/* Brand Technical Identity */}
+               <div className="lg:col-span-1 space-y-8">
+                  <div className="space-y-4">
+                     <h2 className="text-2xl font-black tracking-tighter uppercase leading-none">
+                        Dante<br />Automóviles
+                     </h2>
+                     <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Concesionario Multimarca</p>
+                  </div>
+                  <p className="text-gray-400 text-xs font-light leading-relaxed max-w-xs">
+                     Excelencia operativa y compromiso total con el cliente desde 1990. Red de sucursales en todo el país.
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-gold mt-4">
-                     <CheckCircle2 className="h-4 w-4" />
-                     <span>Concesionario de Calidad Certificada</span>
-                  </div>
                </div>
 
-               <div className="w-full max-w-sm space-y-4">
-                  <h3 className="font-medium text-lg">Suscríbete a nuestro Newsletter</h3>
-                  <p className="text-sm text-white/60">Recibe ofertas exclusivas y alertas de nuevo inventario.</p>
-                  <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                     <Input
-                        type="email"
-                        placeholder="Ingresa tu email"
-                        className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-gold focus:ring-gold"
-                     />
-                     <Button type="submit" variant="secondary" className="whitespace-nowrap">
-                        Suscribirse <ArrowRight className="ml-2 h-4 w-4" />
-                     </Button>
-                  </form>
-               </div>
-            </div>
-
-            {/* Middle Section: Links & Contact */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-
-               {/* Inventory Links */}
-               <div className="space-y-6">
-                  <h4 className="font-bold text-lg">Inventario</h4>
-                  <ul className="space-y-3 text-sm text-white/60">
-                     <li><Link href="/catalog?bodyType=SUV" className="hover:text-gold transition-colors">SUVs de Lujo</Link></li>
-                     <li><Link href="/catalog?bodyType=Coupe" className="hover:text-gold transition-colors">Coupés Deportivos</Link></li>
-                     <li><Link href="/catalog?fuelType=Electric" className="hover:text-gold transition-colors">Vehículos Eléctricos</Link></li>
-                     <li><Link href="/catalog?condition=New" className="hover:text-gold transition-colors">Nuevas Llegadas</Link></li>
-                     <li><Link href="/catalog?condition=Certified+Pre-Owned" className="hover:text-gold transition-colors">Certificados</Link></li>
+               {/* Navigation Technical Stack */}
+               <div className="space-y-8">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Navegación / Stock</p>
+                  <ul className="space-y-4">
+                     {NAV_LINKS.map(link => (
+                        <li key={link.label}>
+                           <Link
+                              href={link.href}
+                              className="text-[11px] font-black uppercase tracking-widest text-foreground hover:text-primary transition-colors flex items-center gap-2 group"
+                           >
+                              <ArrowRight className="h-3 w-3 -ml-5 opacity-0 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                              {link.label}
+                           </Link>
+                        </li>
+                     ))}
                   </ul>
                </div>
 
-               {/* Services Links */}
-               <div className="space-y-6">
-                  <h4 className="font-bold text-lg">Servicios</h4>
-                  <ul className="space-y-3 text-sm text-white/60">
-                     <li><Link href="#" className="hover:text-gold transition-colors">Financiamiento</Link></li>
-                     <li><Link href="#" className="hover:text-gold transition-colors">Vende tu Auto</Link></li>
-                     <li><Link href="#" className="hover:text-gold transition-colors">Búsqueda de Vehículos</Link></li>
-                     <li><Link href="#" className="hover:text-gold transition-colors">Consignación</Link></li>
-                     <li><Link href="#" className="hover:text-gold transition-colors">Centro de Servicio</Link></li>
-                  </ul>
-               </div>
-
-               {/* Contact Info */}
-               <div className="space-y-6">
-                  <h4 className="font-bold text-lg">Contáctanos</h4>
-                  <ul className="space-y-4 text-sm text-white/60">
-                     <li className="flex items-start gap-3">
-                        <MapPin className="h-5 w-5 text-gold shrink-0" />
-                        <span>1234 Premium Blvd,<br />Beverly Hills, CA 90210</span>
-                     </li>
-                     <li className="flex items-center gap-3">
-                        <Phone className="h-5 w-5 text-gold shrink-0" />
-                        <span>+1 (555) 123-4567</span>
-                     </li>
-                     <li className="flex items-center gap-3">
-                        <Mail className="h-5 w-5 text-gold shrink-0" />
-                        <span>concierge@luxeauto.com</span>
-                     </li>
-                  </ul>
-               </div>
-
-               {/* Hours & Map Placeholder */}
-               <div className="space-y-6">
-                  <h4 className="font-bold text-lg flex items-center gap-2">
-                     Visita el Showroom
-                     {isOpenNow ? (
-                        <span className="inline-flex items-center rounded-full bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-400/20">
-                           Abierto Ahora
-                        </span>
-                     ) : (
-                        <span className="inline-flex items-center rounded-full bg-red-900/30 px-2 py-0.5 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/20">
-                           Cerrado
-                        </span>
-                     )}
-                  </h4>
-                  <div className="space-y-2 text-sm text-white/60">
-                     <div className="flex justify-between">
-                        <span>Lun - Sab</span>
-                        <span>9:00 AM - 7:00 PM</span>
+               {/* Logistics / Support */}
+               <div className="space-y-8">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Atención Técnica</p>
+                  <div className="space-y-6">
+                     <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Corporativo</p>
+                        <a href="mailto:ventas@danteautomoviles.com.uy" className="text-xs font-bold hover:text-primary transition-colors">
+                           ventas@danteautomoviles.com.uy
+                        </a>
                      </div>
-                     <div className="flex justify-between">
-                        <span>Domingo</span>
-                        <span>Con Cita Previa</span>
+                     <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Asistencia 24/7</p>
+                        <a href="https://wa.me/59891838500" className="text-xs font-bold hover:text-primary transition-colors flex items-center gap-2">
+                           <MessageCircle className="h-3.5 w-3.5" /> Conectar WhatsApp
+                        </a>
                      </div>
                   </div>
+               </div>
 
-                  {/* Map Placeholder */}
-                  <div className="h-32 w-full bg-white/5 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden group cursor-pointer hover:border-gold/50 transition-colors">
-                     <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Beverly+Hills,CA&zoom=14&size=400x200&sensor=false')] bg-cover bg-center opacity-30 grayscale group-hover:grayscale-0 transition-all duration-500" />
-                     <Button variant="outline" size="sm" className="relative z-10 bg-black/50 border-white/20 text-white backdrop-blur-sm group-hover:bg-gold group-hover:text-black group-hover:border-gold">
-                        Cómo llegar
-                     </Button>
+               {/* Showroom Infrastructure */}
+               <div className="space-y-8">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Sucursales</p>
+                  <div className="space-y-4">
+                     {SHOWROOMS.map(s => (
+                        <div key={s.name} className="flex flex-col gap-1 border-l border-gray-100 pl-4 py-1">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-foreground">{s.name}</p>
+                           <p className="text-[11px] text-gray-400 font-light">{s.address}</p>
+                        </div>
+                     ))}
                   </div>
                </div>
             </div>
+         </div>
 
-            {/* Bottom Bar */}
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10 text-xs text-white/50">
-               <p>&copy; {new Date().getFullYear()} LuxeAuto Inc. Todos los derechos reservados.</p>
-               <div className="flex items-center gap-6">
-                  <Link href="/admin" className="hover:text-white transition-colors">Panel Admin</Link>
-                  <Link href="#" className="hover:text-white transition-colors">Política de Privacidad</Link>
-                  <Link href="#" className="hover:text-white transition-colors">Términos de Servicio</Link>
-                  <div className="flex items-center gap-4 ml-4">
-                     <Link href="#" className="hover:text-gold transition-colors"><Facebook className="h-4 w-4" /></Link>
-                     <Link href="#" className="hover:text-gold transition-colors"><Twitter className="h-4 w-4" /></Link>
-                     <Link href="#" className="hover:text-gold transition-colors"><Instagram className="h-4 w-4" /></Link>
-                  </div>
-               </div>
+         {/* Brand Compliance Bar */}
+         <div className="bg-gray-50 border border-gray-100 py-10 px-6 md:px-12 mx-6 md:mx-12 lg:mx-24 rounded-2xl">
+            <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+               {["FIAT", "FORD", "JEEP", "BYD", "CHERY", "GEELY", "JAC"].map(b => (
+                  <span key={b} className="text-xs font-black tracking-[0.4em]">{b}</span>
+               ))}
+            </div>
+         </div>
+
+         {/* Legal Technical Bar */}
+         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+            <div>© 2024 Dante Automóviles — Operación Uruguaya</div>
+            <div className="flex gap-8">
+               <Link href="#" className="hover:text-foreground transition-all">Privacidad</Link>
+               <Link href="#" className="hover:text-foreground transition-all">Términos</Link>
+               <Link href="#" className="hover:text-foreground transition-all">Cookies</Link>
             </div>
          </div>
       </footer>

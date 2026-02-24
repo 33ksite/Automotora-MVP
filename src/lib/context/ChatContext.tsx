@@ -23,6 +23,9 @@ interface ChatContextType {
     addCar: (car: Omit<CarData, 'id'>) => void;
     isChatOpen: boolean;
     setIsChatOpen: (isOpen: boolean) => void;
+    pendingAIMessage: string | null;
+    triggerAIMessage: (text: string) => void;
+    clearPendingAIMessage: () => void;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -49,6 +52,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         { id: '3', model: 'Mercedes-Benz G550', price: '$156,000' }
     ]);
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [pendingAIMessage, setPendingAIMessage] = useState<string | null>(null);
 
     useEffect(() => {
         const channel = new BroadcastChannel(CHAT_CHANNEL_NAME);
@@ -93,8 +97,21 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         channel.close();
     };
 
+    const triggerAIMessage = (text: string) => {
+        setPendingAIMessage(text);
+        setIsChatOpen(true);
+    };
+
+    const clearPendingAIMessage = () => {
+        setPendingAIMessage(null);
+    };
+
     return (
-        <ChatContext.Provider value={{ messages, addMessage, cars, addCar, isChatOpen, setIsChatOpen }}>
+        <ChatContext.Provider value={{
+            messages, addMessage, cars, addCar,
+            isChatOpen, setIsChatOpen,
+            pendingAIMessage, triggerAIMessage, clearPendingAIMessage
+        }}>
             {children}
         </ChatContext.Provider>
     );
