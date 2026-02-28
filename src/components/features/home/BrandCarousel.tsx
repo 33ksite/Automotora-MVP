@@ -5,13 +5,14 @@ import { motion } from "framer-motion"
 
 const BRANDS = [
     { name: "Fiat", slug: "fiat" },
+    { name: "Audi", url: "https://static.cdnlogo.com/logos/a/18/audi.svg" },
     { name: "Ford", slug: "ford" },
     { name: "Jeep", slug: "jeep" },
-    { name: "BYD", slug: "byd" },
-    { name: "Volkswagen", slug: "volkswagen" },
+    { name: "BYD", url: "https://upload.wikimedia.org/wikipedia/commons/f/f3/BYD_logo.svg" },
+    { name: "Volkswagen", url: "https://static.cdnlogo.com/logos/v/1/volkswagen-2019.svg" },
     { name: "Toyota", slug: "toyota" },
     { name: "Renault", slug: "renault" },
-    { name: "Chevrolet", slug: "chevrolet" },
+    { name: "Chevrolet", url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" },
     { name: "Peugeot", slug: "peugeot" },
     { name: "Nissan", slug: "nissan" },
     { name: "Chery", url: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Chery_logo.svg" },
